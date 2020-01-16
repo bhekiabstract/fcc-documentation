@@ -19,21 +19,57 @@
     <main id="main-doc">
       <section id="common_apis" class="main-section">
         <header>Common APIs</header>
+        <p>This handbook serves as a clearinghouse for documentation on all APIs present within the WordPress software as well as APIs available from the WordPress.org ecosystem.</p>
       </section>
       <section id="database_api" class="main-section">
         <header>Database API</header>
+        <p>This page lists all holistic pages of a given Database related API. Each covers the functions involved in and use of a given set of functionality. Together they form what might be called the WordPress Database API, which is the plugin/theme/add-on interface created by the entire WordPress project in respect to access data as named values stored in the database layer.</p>
+        <p>If you’ve read through all of these you should have a good sense of how to extend WordPress through Plugins that do access the database in an easy way.</p>
       </section>
       <section id="http_api" class="main-section">
         <header>HTTP API</header>
+        <p>Within PHP, there are many possible ways to send an HTTP request. For simplicity, these methods will be referred to collectively as “transports” for this article. The purpose for the HTTP API is to support as many of them as possible with an API that is simple and standard for each of the transports.</p>
+        <p>The problem is that web hosting servers support different transports and some might support none. The solution then is to support as many as possible to allow for those who have hosts that disable one or two to still access the web through one of the other transports that might still be enabled or supported.</p>
+        <p>The other problem was that there wasn’t any API for plugins and WordPress core to standardize on. Therefore, there used to be several different implementations in WordPress and many still in Plugins. The problem is even worse for plugins, because the author had to write the implementation themselves and support it afterwards. Given how many workarounds were required for the HTTP API in WordPress, that would be extremely difficult to support. It would also have to be reimplemented in each plugin that wanted to support as many as possible, which many just choose to support one or two if the plugin author was feeling generous.</p>
+        <p>The HTTP API was also an attempt to standardize on a single API that handled everything as simply as possible. The actual implementation is object-oriented, but there are utility functions, which can be used to abstract the API usage.</p>
+        <p>The HTTP API was added in WordPress 2.7 and extended further in WordPress 2.8. You may want to maintain backwards compatibility with previous versions, so you should wrap the function calls in function_exists() and provide an alternative, if possible.</p>
+        <p>In WordPress 2.7, the basics of header, body and response support was started. In the next version, WordPress 2.8, compression, cookie support and proxy support were added. Some of the features are passive, meaning that you don’t have to set any option or do anything in order to use the feature. If you use an option that is in a later version, it won’t give you an error, but may not work correctly.</p>
+        <p>While most of the features can be set using the options or using filters, the proxy implementation relies on constants and thus will need to be set manually in the wp-config.php file. Of course, there could be and might already be a plugin that will allow you to configure it in the WordPress administration panels.</p>
       </section>
       <section id="file_system" class="main-section">
         <header>File System</header>
+        <h2>Getting Credentials</h2>
+        <p>The first step in using the WP_Filesystem is requesting credentials from the user. The normal way this is accomplished is at the time when you’re saving the results of a form input, or you have otherwise determined that you need to write to a file.</p>
+        <p>The credentials form can be displayed onto an admin page by using the following code:</p>
+        <code>$url = wp_nonce_url( 'themes.php?page=example', 'example-theme-options' );
+          if ( false === ( $creds = request_filesystem_credentials( $url, '', false, false, null ) ) ) {
+              return; // stop processing here
+          }</code>
       </section>
       <section id="global_variables" class="main-section">
         <header>Global Variables</header>
+        <p>WordPress-specific global variables are used throughout WordPress code for various reasons. Almost all data that WordPress generates can be found in a global variable.</p>
+        <p>Note that it’s best to use the appropriate API functions when available, instead of modifying globals directly.</p>
+        <p>To access a global variable in your code, you first need to globalize the variable with global $variable;.</p>
+        <p>Accessing other globals besides the ones listed below is not recommended.</p>
+        <p>Inside the Loop variables</p>
+        <p>While inside the loop, these globals are set, containing information about the current post being processed.</p>
+        <li>$post (WP_Post): The post object for the current post. Object described in WP_Post Class Reference.</li>
+        <li>$posts: Used by some core functions, not to be mistaken for $query->$posts.</li>
+        <li>$authordata (WP_User): The author object for the current post. Object described in WP_User Class Reference.</li>
+        <li>$currentday (string): Day that the current post was published.</li>
+        <li>$currentmonth (string): Month that the curent post was published.</li>
+        <li>$page (int): The page of the current post being viewed. Specified by the query var page.</li>
+        <li>$pages (array): The content of the pages of the current post. Each page elements contains part of the content separated by the <!--nextpage--> tag.</li>
+        <li>$multipage (boolean): Flag to know if the current post has multiple pages or not. Returns true if the post has multiple pages, related to $pages.</li>
+        <li>$more (boolean): Flag to know if WordPress should enforce the <!--more--> tag for the current post. WordPress will not enforce the more tag if true.</li>
+        <li>$numpages (int): Returns the number of pages in the post, related to $pages.</li>
       </section>
       <section id="metadata" class="main-section">
         <header>Metadata</header>
+        <p>The Metadata API is a simple and standarized way for retrieving and manipulating metadata of various WordPress object types.</p>
+        <p>Metadata for an object is a represented by a simple key-value pair.</p>
+        <p>Objects may contain multiple metadata entries that share the same key and differ only in their value.</p>
       </section>
       <section id="reference" class="main-section">
         <header>Reference</header>
