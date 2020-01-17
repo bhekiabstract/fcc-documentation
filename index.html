@@ -11,10 +11,32 @@
   <link rel="stylesheet" href="styles.css">
 
 </head>
-<nav></nav>
 <body>
-    <nav>
-        
+    <nav id="navbar">
+      <header>WordPress API Documentation</header>
+        <ul>
+          <li>
+            <a href="" class="nav-link">Common APIs</a>
+          </li>
+          <li>
+            <a href="" class="nav-link">Database API</a>
+          </li>
+          <li>
+            <a href="" class="nav-link">HTTP API</a>
+          </li>
+          <li>
+            <a href="" class="nav-link">File System</a>
+          </li>
+          <li>
+            <a href="" class="nav-link">Global Variables</a>
+          </li>
+          <li>
+            <a href="" class="nav-link">Metadata</a>
+          </li>
+          <li>
+            <a href="" class="nav-link">Reference</a>
+          </li>
+        </ul>
     </nav>
     <main id="main-doc">
       <section id="common_apis" class="main-section">
@@ -53,11 +75,13 @@
               return; // stop processing here
           }</code>
           <p>The request_filesystem_credentials() call takes five arguments.</p>
+          <ul>
             <li>The URL to which the form should be submitted (a nonced URL to a theme page was used in the example above)</li>
             <li>A method override (normally you should leave this as the empty string: “”)</li>
             <li>An error flag (normally false unless an error is detected, see below)</li>
             <li>A context directory (false, or a specific directory path that you want to test for access)</li>
             <li>Form fields (an array of form field names from your previous form that you wish to “pass-through” the resulting credentials form, or null if there are none)</li>
+          </ul>
             <h3>Initializing WP_Filesystem_Base #InitializingWP_Filesystem_Base</h3>
             <p>Before the WP_Filesystem can be used, it must be initialized with the proper credentials. This can be done like so:</p>
             <code>if ( ! WP_Filesystem( $creds ) ) {
@@ -101,16 +125,18 @@
         <p>Accessing other globals besides the ones listed below is not recommended.</p>
         <p>Inside the Loop variables</p>
         <p>While inside the loop, these globals are set, containing information about the current post being processed.</p>
-        <li>$post (WP_Post): The post object for the current post. Object described in WP_Post Class Reference.</li>
-        <li>$posts: Used by some core functions, not to be mistaken for $query->$posts.</li>
-        <li>$authordata (WP_User): The author object for the current post. Object described in WP_User Class Reference.</li>
-        <li>$currentday (string): Day that the current post was published.</li>
-        <li>$currentmonth (string): Month that the curent post was published.</li>
-        <li>$page (int): The page of the current post being viewed. Specified by the query var page.</li>
-        <li>$pages (array): The content of the pages of the current post. Each page elements contains part of the content separated by the <!--nextpage--> tag.</li>
-        <li>$multipage (boolean): Flag to know if the current post has multiple pages or not. Returns true if the post has multiple pages, related to $pages.</li>
-        <li>$more (boolean): Flag to know if WordPress should enforce the <!--more--> tag for the current post. WordPress will not enforce the more tag if true.</li>
-        <li>$numpages (int): Returns the number of pages in the post, related to $pages.</li>
+        <ul>
+          <li>$post (WP_Post): The post object for the current post. Object described in WP_Post Class Reference.</li>
+          <li>$posts: Used by some core functions, not to be mistaken for $query->$posts.</li>
+          <li>$authordata (WP_User): The author object for the current post. Object described in WP_User Class Reference.</li>
+          <li>$currentday (string): Day that the current post was published.</li>
+          <li>$currentmonth (string): Month that the curent post was published.</li>
+          <li>$page (int): The page of the current post being viewed. Specified by the query var page.</li>
+          <li>$pages (array): The content of the pages of the current post. Each page elements contains part of the content separated by the <!--nextpage--> tag.</li>
+          <li>$multipage (boolean): Flag to know if the current post has multiple pages or not. Returns true if the post has multiple pages, related to $pages.</li>
+          <li>$more (boolean): Flag to know if WordPress should enforce the <!--more--> tag for the current post. WordPress will not enforce the more tag if true.</li>
+          <li>$numpages (int): Returns the number of pages in the post, related to $pages.</li>
+        </ul>
       </section>
       <section id="metadata" class="main-section">
         <header>Metadata</header>
