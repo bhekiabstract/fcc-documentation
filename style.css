@@ -1,0 +1,42 @@
+body {
+    min-width: 290px;
+}
+
+#navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-width: 290px;
+    height: 100%;
+    margin-top: 2.5em;
+}
+
+#main-doc {
+    padding: 30px;
+    position: absolute;
+    margin-left: 310px;
+    margin-bottom: 5em;
+}
+
+header {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+code {
+    background-color: #f7f7f7;
+    text-align: left;
+    padding: 10px;
+    line-height: 2;
+    white-space: pre;
+    display: block;
+}
+
+@media screen and (max-width: 400px ) {
+    {
+        
+    }
+}

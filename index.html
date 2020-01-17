@@ -8,12 +8,12 @@
   <meta name="description" content="FCC Technical Documentation">
   <meta name="author" content="Bhekimpilo">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
     <nav id="navbar">
-      <header>WordPress API Documentation</header>
+      <header>WordPress API<br> Documentation</header>
         <ul>
           <li>
             <a href="#common_apis" class="nav-link">Common APIs</a>
@@ -40,16 +40,16 @@
     </nav>
     <main id="main-doc">
       <section id="common_apis" class="main-section">
-        <header>Common APIs</header>
+        <header class="main-head">Common APIs</header>
         <p>This handbook serves as a clearinghouse for documentation on all APIs present within the WordPress software as well as APIs available from the WordPress.org ecosystem.</p>
       </section>
       <section id="database_api" class="main-section">
-        <header>Database API</header>
+        <header class="main-head">Database API</header>
         <p>This page lists all holistic pages of a given Database related API. Each covers the functions involved in and use of a given set of functionality. Together they form what might be called the WordPress Database API, which is the plugin/theme/add-on interface created by the entire WordPress project in respect to access data as named values stored in the database layer.</p>
         <p>If you’ve read through all of these you should have a good sense of how to extend WordPress through Plugins that do access the database in an easy way.</p>
       </section>
       <section id="http_api" class="main-section">
-        <header>HTTP API</header>
+        <header class="main-head">HTTP API</header>
         <p>Within PHP, there are many possible ways to send an HTTP request. For simplicity, these methods will be referred to collectively as “transports” for this article. The purpose for the HTTP API is to support as many of them as possible with an API that is simple and standard for each of the transports.</p>
         <p>The problem is that web hosting servers support different transports and some might support none. The solution then is to support as many as possible to allow for those who have hosts that disable one or two to still access the web through one of the other transports that might still be enabled or supported.</p>
         <p>The other problem was that there wasn’t any API for plugins and WordPress core to standardize on. Therefore, there used to be several different implementations in WordPress and many still in Plugins. The problem is even worse for plugins, because the author had to write the implementation themselves and support it afterwards. Given how many workarounds were required for the HTTP API in WordPress, that would be extremely difficult to support. It would also have to be reimplemented in each plugin that wanted to support as many as possible, which many just choose to support one or two if the plugin author was feeling generous.</p>
@@ -66,7 +66,7 @@
         <code>$the_body = wp_remote_retrieve_body( wp_remote_get( 'http://www.wordpress.org' ) );</code>
       </section>
       <section id="file_system" class="main-section">
-        <header>File System</header>
+        <header class="main-head">File System</header>
         <h2>Getting Credentials</h2>
         <p>The first step in using the WP_Filesystem is requesting credentials from the user. The normal way this is accomplished is at the time when you’re saving the results of a form input, or you have otherwise determined that you need to write to a file.</p>
         <p>The credentials form can be displayed onto an admin page by using the following code:</p>
@@ -118,7 +118,7 @@
                   global $wp_filesystem;</code>
       </section>
       <section id="global_variables" class="main-section">
-        <header>Global Variables</header>
+        <header class="main-head">Global Variables</header>
         <p>WordPress-specific global variables are used throughout WordPress code for various reasons. Almost all data that WordPress generates can be found in a global variable.</p>
         <p>Note that it’s best to use the appropriate API functions when available, instead of modifying globals directly.</p>
         <p>To access a global variable in your code, you first need to globalize the variable with global $variable;.</p>
@@ -139,13 +139,13 @@
         </ul>
       </section>
       <section id="metadata" class="main-section">
-        <header>Metadata</header>
+        <header class="main-head">Metadata</header>
         <p>The Metadata API is a simple and standarized way for retrieving and manipulating metadata of various WordPress object types.</p>
         <p>Metadata for an object is a represented by a simple key-value pair.</p>
         <p>Objects may contain multiple metadata entries that share the same key and differ only in their value.</p>
       </section>
       <section id="reference" class="main-section">
-        <header>Reference</header>
+        <header class="main-head">Reference</header>
         <li>All the documentation in this page is taken from <a href="https://developer.wordpress.org/apis/" target="_blank">WordPress API Docs</a></li>
       </section>
     </main>
